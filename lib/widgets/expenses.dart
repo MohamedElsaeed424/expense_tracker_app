@@ -27,6 +27,7 @@ class _Expenses extends State<Expenses> {
         category: Category.travel,
         amount: 111.9)
   ];
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
