@@ -2,6 +2,7 @@
 // responsable for the main styling
 // use in main.dart
 import 'package:expense_tracker_app/widgets/expenses_list/expenses_list.dart';
+import 'package:expense_tracker_app/widgets/new_expense.dart';
 import 'package:flutter/material.dart';
 
 import '../models/expense.dart';
@@ -31,7 +32,7 @@ class _Expenses extends State<Expenses> {
 
   void _openAddExpenseOverlay() {
     showModalBottomSheet(
-        context: context, builder: (ctx) => Text('Hello There'));
+        context: context, builder: (ctx) => const NewExpense());
   }
 
   @override
