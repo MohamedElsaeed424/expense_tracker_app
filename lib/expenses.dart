@@ -1,3 +1,6 @@
+// this class to show the List of expenses also 
+// responsable for the main styling 
+import 'package:expense_tracker_app/expenses_list.dart';
 import 'package:flutter/material.dart';
 
 import 'models/expense.dart';
@@ -26,9 +29,14 @@ class _Expenses extends State<Expenses> {
   ];
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Column(
-        children: [Text('Hello'), Text('Iam')],
+        children: [
+          const Text('Hello'),
+          Expanded(
+            child: ExpensesList(expenses: _registeredExpenses),
+          ),
+        ],
       ),
     );
   }
