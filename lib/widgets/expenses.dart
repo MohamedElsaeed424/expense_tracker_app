@@ -3,7 +3,6 @@
 // use in main.dart
 
 import 'package:expense_tracker_app/widgets/chart/chart.dart';
-import 'package:expense_tracker_app/widgets/chart/chart_bar.dart';
 import 'package:expense_tracker_app/widgets/expenses_list/expenses_list.dart';
 import 'package:expense_tracker_app/widgets/new_expense.dart';
 import 'package:flutter/material.dart';
