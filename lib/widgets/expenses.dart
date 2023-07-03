@@ -1,9 +1,11 @@
 // this class to show the List of expenses also
 // responsable for the main styling
 // use in main.dart
+
 import 'package:expense_tracker_app/widgets/expenses_list/expenses_list.dart';
 import 'package:expense_tracker_app/widgets/new_expense.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../models/expense.dart';
 
@@ -46,13 +48,33 @@ class _Expenses extends State<Expenses> {
   }
 
   void _removeExpense(Expense expense) {
+    final expenseIndex = _registeredExpenses.indexOf(expense);
     setState(() {
       _registeredExpenses.remove(expense);
     });
+    ScaffoldMessenger.of(context).clearSnackBars();
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      duration: const Duration(seconds: 3),
+      content: const Text('Expense Deleted'),
+      action: SnackBarAction(
+        label: 'Undo',
+        onPressed: () {
+          setState(() {
+            _registeredExpenses.insert(expenseIndex, expense);
+          });
+        },
+      ),
+    ));
   }
 
   @override
   Widget build(BuildContext context) {
+    Widget mainContent = Center(
+      child: Text('No Expenses Yet',
+          style: GoogleFonts.lato(
+            fontSize: 30,
+          )),
+    );
     return Scaffold(
       appBar: AppBar(
         title: const Text('Expenses Tracker'),
@@ -67,8 +89,11 @@ class _Expenses extends State<Expenses> {
         children: [
           const Text('Chart'),
           Expanded(
-            child: ExpensesList(
-                expenses: _registeredExpenses, onRemoveExpense: _removeExpense),
+            child: _registeredExpenses.isEmpty
+                ? mainContent
+                : ExpensesList(
+                    expenses: _registeredExpenses,
+                    onRemoveExpense: _removeExpense),
           ),
         ],
       ),
