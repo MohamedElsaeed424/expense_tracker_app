@@ -1,5 +1,6 @@
-// this class to show the List of expenses also 
-// responsable for the main styling 
+// this class to show the List of expenses also
+// responsable for the main styling
+// use in main.dart
 import 'package:expense_tracker_app/widgets/expenses_list/expenses_list.dart';
 import 'package:flutter/material.dart';
 
@@ -27,13 +28,22 @@ class _Expenses extends State<Expenses> {
         category: Category.travel,
         amount: 111.9)
   ];
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Expense Tracker'),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.add),
+          )
+        ],
+      ),
       body: Column(
         children: [
-          const Text('Hello'),
+          const Text('Chart'),
           Expanded(
             child: ExpensesList(expenses: _registeredExpenses),
           ),

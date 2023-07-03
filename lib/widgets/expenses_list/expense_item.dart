@@ -1,3 +1,4 @@
+// this class for the shape that the one expense will be Shown
 import 'package:expense_tracker_app/models/expense.dart';
 import 'package:flutter/material.dart';
 
