@@ -1,9 +1,9 @@
 // this class to show the List of expenses also 
 // responsable for the main styling 
-import 'package:expense_tracker_app/expenses_list.dart';
+import 'package:expense_tracker_app/widgets/expenses_list/expenses_list.dart';
 import 'package:flutter/material.dart';
 
-import 'models/expense.dart';
+import '../models/expense.dart';
 
 class Expenses extends StatefulWidget {
   const Expenses({super.key});
