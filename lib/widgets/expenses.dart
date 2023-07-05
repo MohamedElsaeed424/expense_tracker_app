@@ -36,6 +36,7 @@ class _Expenses extends State<Expenses> {
   void _openAddExpenseOverlay() {
     showModalBottomSheet(
         isScrollControlled: true,
+        useSafeArea: true,
         context: context,
         builder: (ctx) => NewExpense(
               onAddExpense: _addExpense,
@@ -70,6 +71,7 @@ class _Expenses extends State<Expenses> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     Widget mainContent = Center(
       child: Text('No Expenses Yet',
           style: GoogleFonts.lato(
@@ -86,18 +88,32 @@ class _Expenses extends State<Expenses> {
           )
         ],
       ),
-      body: Column(
-        children: [
-          Chart(expenses: _registeredExpenses),
-          Expanded(
-            child: _registeredExpenses.isEmpty
-                ? mainContent
-                : ExpensesList(
-                    expenses: _registeredExpenses,
-                    onRemoveExpense: _removeExpense),
-          ),
-        ],
-      ),
+      // to make the app looks nice while rotating
+      body: width < 600
+          ? Column(
+              children: [
+                Chart(expenses: _registeredExpenses),
+                Expanded(
+                  child: _registeredExpenses.isEmpty
+                      ? mainContent
+                      : ExpensesList(
+                          expenses: _registeredExpenses,
+                          onRemoveExpense: _removeExpense),
+                ),
+              ],
+            )
+          : Row(
+              children: [
+                Expanded(child: Chart(expenses: _registeredExpenses)),
+                Expanded(
+                  child: _registeredExpenses.isEmpty
+                      ? mainContent
+                      : ExpensesList(
+                          expenses: _registeredExpenses,
+                          onRemoveExpense: _removeExpense),
+                ),
+              ],
+            ),
     );
   }
 }

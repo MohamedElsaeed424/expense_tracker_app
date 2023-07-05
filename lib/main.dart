@@ -8,6 +8,12 @@ var kDarkColorScheme = ColorScheme.fromSeed(
     brightness: Brightness.dark,
     seedColor: const Color.fromARGB(0, 117, 59, 0));
 void main() {
+  // // to make sure that the app work as i want
+  // WidgetsFlutterBinding.ensureInitialized();
+  // // to keep the rotation un aceptable
+  // SystemChrome.setPreferredOrientations([
+  //   DeviceOrientation.portraitUp,
+  // ]).then((fn) =>
   runApp(MaterialApp(
     darkTheme: ThemeData.dark().copyWith(
       useMaterial3: true,
@@ -18,7 +24,6 @@ void main() {
       elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
         backgroundColor: kDarkColorScheme.primaryContainer,
-        
       )),
     ),
     theme: ThemeData().copyWith(
@@ -43,4 +48,5 @@ void main() {
     themeMode: ThemeMode.system,
     home: const Expenses(),
   ));
+  // );
 }
